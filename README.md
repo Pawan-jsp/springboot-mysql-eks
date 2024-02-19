@@ -52,8 +52,10 @@ Here I have created REST API's to add and retrieve ExchangeRate in the MySql dat
 
 10.From the terminal cd into your project directory and build project using command:
 
-MYSQL_HOSTNAME=127.0.0.1 MYSQL_PORT=3306 MYSQL_DATABASE=ytlecture MYSQL_USERNAME=root MYSQL_PASSWORD=your_password ./gradlew clean build
-or to build without running test run this command ./gradlew clean assemble
+    MYSQL_HOSTNAME=127.0.0.1 MYSQL_PORT=3306 MYSQL_DATABASE=ytlecture MYSQL_USERNAME=root MYSQL_PASSWORD=your_password ./gradlew clean build
+
+    or to build without running test run this command ./gradlew clean assemble
+
 11.Create a docker repository in AWS ECS service. Give it name as springboot-mysql-eks
 
 12.Follow the push commands from AWS ECS repository push command options. (make sure docker is started on the local machine.).
@@ -108,13 +110,13 @@ helm install mychart ytchart
 
 # To add ExchangeRate in database :
 
-curl -X POST http://localhost:8080/addExchangeRate \
--d '{ "sourceCurrency" : "USD", "targetCurrency" : "AUD", "amount": 1.52, "lastUpdated" : "2023-11-22" }' \
--H 'Content-Type: application/json'
+    curl -X POST http://localhost:8080/addExchangeRate \
+    -d '{ "sourceCurrency" : "USD", "targetCurrency" : "AUD", "amount": 1.52, "lastUpdated" : "2023-11-22" }' \
+    -H 'Content-Type: application/json'
 
 # To get exchange rate based on SourceCurrency and TargetCurrency :
 
-curl -X GET 'http://localhost:8080/getAmount?sourceCurrency=USD&targetCurrency=AUD'
+     curl -X GET 'http://localhost:8080/getAmount?sourceCurrency=USD&targetCurrency=AUD'
 
 # Note : In the actual production environment, do not commit files with credentials like we have mentioned in secrets.yaml file.
 
